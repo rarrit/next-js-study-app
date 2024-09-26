@@ -23,6 +23,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // 루트에선 런타임 에러남, 프로덕션 모드에서만 노출됨
+  // if(Math.random() < 0.1) throw new Error("루트 에러");
   return (
     <html lang="en">
       <body
