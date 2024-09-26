@@ -3,20 +3,30 @@
 import { useEffect, useState } from "react";
 import { Product } from "../page";
 
-const fetchData = async () => {
-  const res = await fetch("http://localhost:4000/products", {
-    cache: "force-cache",
-  });
-  const data: Product[] = await res.json();
-  return data;
-}
+// const fetchData = async () => {
+//   const res = await fetch("http://localhost:4000/products", {
+//     cache: "no-cache",
+//   });
+//   const data: Product[] = await res.json();
+//   return data;
+// }
 
 const ProductList = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetchData().then(setData);
+    // fetchData().then(setData);
+    setIsLoading(true);
+    fetch("http://localhost:4000/products")
+    .then((res) => res.json())
+    .then((data) => {
+      setData(data);
+      setIsLoading(false)
+    });
   }, [])
+
+  if(isLoading) return <>Loading...</>
 
   return (
     <div className="p-8 m-4">
