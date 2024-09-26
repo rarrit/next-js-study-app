@@ -1,7 +1,8 @@
 "use client";
 
 // error 처리
-import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { startTransition, useEffect } from "react";
 
 export default function Error({
   error,
@@ -10,6 +11,8 @@ export default function Error({
   error: Error & { digest?: string }
   reset: () => void
 }) {
+  const { refresh } = useRouter();
+  // react 18 에서 생긴 메서드 => startTransition()
   useEffect(() => {
     console.error(error);
   }, [error]);
@@ -18,7 +21,11 @@ export default function Error({
     <div>
       <h2>Something went wrong!</h2>
       <p>{error.message}</p>
-      <button onClick={() => reset()}>Try again</button>
+      <button onClick={() => 
+      startTransition(() => {
+        refresh();
+        reset();
+      })}>Try again</button>
     </div>
   );
 }

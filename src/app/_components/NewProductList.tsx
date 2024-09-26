@@ -10,7 +10,7 @@ const NewProductList = async () => {
   const newData = data.filter((p) => !p.isNew);
 
   // Error 발생시키기
-  // throw new Error("오류!");
+  if(Math.random() > 0.5) throw new Error("오류!");
   
 
   return (
