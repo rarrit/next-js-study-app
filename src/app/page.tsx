@@ -1,4 +1,7 @@
+import { Suspense } from "react";
+import NewProductList from "./_components/NewProductList";
 import ProductList from "./_components/ProductList";
+import Loading from "./loading";
 
 
 export default async function Home() {
@@ -6,9 +9,14 @@ export default async function Home() {
 
   return (
     <>
-      <div className="p-8 m-4">
+      <Suspense fallback={<Loading/>}>
         <ProductList/>
-      </div>
+      </Suspense>  
+      <div className="p-8 m-4">
+        <Suspense fallback={<Loading/>}>
+          <NewProductList/>
+        </Suspense>                              
+      </div>            
     </>
   );
 }
