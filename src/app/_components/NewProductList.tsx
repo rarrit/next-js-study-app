@@ -2,6 +2,8 @@ import { Product } from "../page";
 
 
 const NewProductList = async () => {
+  // loading 처리
+  
   const res = await fetch("http://localhost:4001/products", {
     cache: "no-store",
   });

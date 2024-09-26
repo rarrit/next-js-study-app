@@ -12,6 +12,8 @@ import { Product } from "../page";
 // }
 
 const ProductList = async () => {
+  // loading 처리
+  
   // const [isLoading, setIsLoading] = useState(false);
   // const [data, setData] = useState<Product[]>([]);
 
