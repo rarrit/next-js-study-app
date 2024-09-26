@@ -19,7 +19,9 @@ export default async function Home() {
 
   // fetch API 사용
   const res = await fetch("http://localhost:4000/products", {
-    cache: "no-store", // 유저가 요청할 때 마다 렌더링함 (SSR)    
+    next: {
+      revalidate: 3, // ISR - 3초마다
+    }
   });
   const data: Product[] = await res.json();
   console.log("render");
