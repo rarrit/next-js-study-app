@@ -1,7 +1,6 @@
 // "use client";
 
 import ClientExample from "@/component/ClientExample";
-import ProductList from "./_components/ProductList";
 
 // SSG 방식 - next 는 아무것도 하지 않았다면 SSG 방식임
 
@@ -18,10 +17,36 @@ export default async function Home() {
   console.log("안녕, 난 서버 컴포넌트야");
   console.log("Next JS는 서버(LocalHost)에서 실행이 된다. ");
 
+  // fetch API 사용
+  const res = await fetch("http://localhost:4000/products", {
+    cache: "no-store", // 유저가 요청할 때 마다 렌더링함 (SSR)    
+  });
+  const data: Product[] = await res.json();
+  console.log("render");
+
   return (
     <>
       <ClientExample/>
-      <ProductList/>
+      <div className="p-8 m-4">
+        {data.map((product) => (
+          <div className="flex border p-4 gap-4 rounded-md" key={product.id}>
+            <img
+              className="rounded-smr"
+              width={150}
+              height={150}
+              src={product.images}
+              alt={product.title}
+            />
+            <div className="flex flex-col justify-between">
+              <div>
+                <h2 className="text-xl font-bold">{product.title}</h2>
+                <p className="text-sm">{product.description}</p>
+                <p className="mt-4 text-2xl">{product.price.amount}$</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </>
   );
 }
