@@ -12,6 +12,8 @@ import { Product } from "../page";
 // }
 
 const ProductList = async () => {
+  // 로딩 처리는 app > loading.tsx 로 확인가능
+
   // const [isLoading, setIsLoading] = useState(false);
   // const [data, setData] = useState<Product[]>([]);
 
@@ -20,6 +22,7 @@ const ProductList = async () => {
   });
   const data: Product[] = await res.json();
   
+
   // useEffect(() => {
   //   // fetchData().then(setData);
   //   setIsLoading(true);

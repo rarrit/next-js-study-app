@@ -2,6 +2,8 @@ import { Product } from "../page";
 
 
 const NewProductList = async () => {
+  // 로딩 처리는 app > loading.tsx 로 확인가능
+  
   const res = await fetch("http://localhost:4001/products", {
     cache: "no-store",
   });

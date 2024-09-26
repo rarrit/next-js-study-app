@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint",    
     "server": "json-server --watch --delay 3000 --port 4000 db.json",
     "server2": "json-server --watch --delay 2000 --port 4001 db2.json"
   },
