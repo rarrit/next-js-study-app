@@ -1,6 +1,6 @@
-"use client";
+// "use client";
 
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { Product } from "../page";
 
 // const fetchData = async () => {
@@ -11,22 +11,27 @@ import { Product } from "../page";
 //   return data;
 // }
 
-const ProductList = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState<Product[]>([]);
+const ProductList = async () => {
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [data, setData] = useState<Product[]>([]);
 
-  useEffect(() => {
-    // fetchData().then(setData);
-    setIsLoading(true);
-    fetch("http://localhost:4000/products")
-    .then((res) => res.json())
-    .then((data) => {
-      setData(data);
-      setIsLoading(false)
-    });
-  }, [])
+  const res = await fetch("http://localhost:4000/products", {
+    cache: "no-cache",
+  });
+  const data: Product[] = await res.json();
+  
+  // useEffect(() => {
+  //   // fetchData().then(setData);
+  //   setIsLoading(true);
+  //   fetch("http://localhost:4000/products")
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     setData(data);
+  //     setIsLoading(false)
+  //   });
+  // }, [])
 
-  if(isLoading) return <>Loading...</>
+  // if(isLoading) return <>Loading...</>
 
   return (
     <div className="p-8 m-4">
