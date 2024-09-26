@@ -9,6 +9,7 @@ const NewProductList = async () => {
   console.log("data===>", data);
   const newData = data.filter((p) => !p.isNew);
 
+  // Error 발생시키기
   throw new Error("오류!");
   
 

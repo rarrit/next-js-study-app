@@ -1,5 +1,6 @@
 "use client";
 
+// error 처리
 import { useEffect } from "react";
 
 export default function Error({
