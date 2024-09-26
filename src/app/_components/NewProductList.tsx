@@ -6,7 +6,7 @@ const NewProductList = async () => {
     cache: "no-store",
   });
   const data: Product[] = await res.json();
-  console.log("data===>", data);
+  
   const newData = data.filter((p) => !p.isNew);
 
   // Error 발생시키기
