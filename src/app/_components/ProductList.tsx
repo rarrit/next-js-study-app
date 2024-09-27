@@ -17,7 +17,7 @@ const ProductList = async () => {
   // const [data, setData] = useState<Product[]>([]);
 
   const res = await fetch("http://localhost:4000/products", {
-    cache: "no-store",
+    cache: "force-cache"
   });
   const data: Product[] = await res.json();
   
