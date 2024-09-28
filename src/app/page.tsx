@@ -1,7 +1,7 @@
-import { Suspense } from "react";
+// import { Suspense } from "react";
 import NewProductList from "./_components/NewProductList";
 import ProductList from "./_components/ProductList";
-import Loading from "./loading";
+// import Loading from "./loading";
 
 
 export default async function Home() {
@@ -9,14 +9,17 @@ export default async function Home() {
 
   return (
     <>
-      <Suspense fallback={<Loading/>}>
+      {/* <Suspense fallback={<Loading/>}>
         <ProductList/>
       </Suspense>  
       <div className="p-8 m-4">
         <Suspense fallback={<Loading/>}>
           <NewProductList/>
         </Suspense>                              
-      </div>            
+      </div>             */}
+      <NewProductList/>
+      <ProductList/>
+      
     </>
   );
 }
