@@ -2,6 +2,7 @@
 
 // import { useEffect, useState } from "react";
 import { Product } from "../page";
+import Image from "next/image";
 
 // const fetchData = async () => {
 //   const res = await fetch("http://localhost:4000/products", {
@@ -37,7 +38,7 @@ const ProductList = async () => {
     <div className="p-8 m-4">
       {data.map((product) => (
         <div className="flex border p-4 gap-4 rounded-md" key={product.id}>
-          <img
+          <Image
             className="rounded-smr"
             width={150}
             height={150}
